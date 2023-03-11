@@ -1,5 +1,7 @@
 #!/bin/bash
+mypath=${BASH_SOURCE:-$0}
+justpath=`echo $mypath | sed s/cptoc//`
 pdftk "$@" data_dump output ag_meta.txt
-python extractpdftoc.py
+python ${justpath}extractpdftoc.py
 xclip ag_toc.txt -sel c
 rm ag_meta.txt ag_toc.txt
