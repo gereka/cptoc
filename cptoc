@@ -1,0 +1,5 @@
+#!/bin/bash
+pdftk "$@" data_dump output ag_meta.txt
+python extractpdftoc.py
+xclip ag_toc.txt -sel c
+rm ag_meta.txt ag_toc.txt
